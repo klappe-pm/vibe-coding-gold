@@ -8,16 +8,16 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
-    pageTitleSuffix: "",
+    pageTitle: "Vibe Coding Gold 🌟",
+    pageTitleSuffix: " | Where AI Absurdity Meets Working Code",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    baseUrl: "vibecoding.gold",
+    ignorePatterns: ["private", "templates", ".obsidian", ".trash", ".git", "node_modules", ".DS_Store"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
@@ -34,10 +34,10 @@ const config: QuartzConfig = {
           gray: "#b8b8b8",
           darkgray: "#4e4e4e",
           dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          secondary: "#FFCB05",  // Golden accent color
+          tertiary: "#FFA500",   // Orange accent
+          highlight: "rgba(255, 203, 5, 0.15)",  // Golden highlight
+          textHighlight: "#FFCB0588",  // Golden text highlight
         },
         darkMode: {
           light: "#161618",
@@ -45,10 +45,10 @@ const config: QuartzConfig = {
           gray: "#646464",
           darkgray: "#d4d4d4",
           dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          secondary: "#FFCB05",  // Golden accent color
+          tertiary: "#FFA500",   // Orange accent
+          highlight: "rgba(255, 203, 5, 0.15)",  // Golden highlight
+          textHighlight: "#FFCB0588",  // Golden text highlight
         },
       },
     },
@@ -73,7 +73,7 @@ const config: QuartzConfig = {
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
-    filters: [Plugin.RemoveDrafts()],
+    filters: [Plugin.ExplicitPublish()],
     emitters: [
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
