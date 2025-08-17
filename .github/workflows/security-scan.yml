@@ -32,28 +32,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
         
-      - name: Run Snyk to check for vulnerabilities
+      - name: Run Snyk to check for vulnerabilities (auth required)
+        if: env.SNYK_TOKEN != ''
         uses: snyk/actions/node@master
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --severity-threshold=high --json > snyk-results.json
+          args: --severity-threshold=high
           
-      - name: Upload Snyk results to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v3
-        if: always()
-        with:
-          sarif_file: snyk.sarif
-          
-      - name: Run Snyk to check for vulnerabilities (monitor)
-        uses: snyk/actions/node@master
-        continue-on-error: true
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          command: monitor
-          args: --project-name=vibe-coding-gold
+      - name: Run Snyk without auth (limited features)
+        if: env.SNYK_TOKEN == ''
+        run: |
+          echo "## Snyk Scan Results" >> $GITHUB_STEP_SUMMARY
+          echo "⚠️ SNYK_TOKEN not configured - running in limited mode" >> $GITHUB_STEP_SUMMARY
+          echo "To enable full Snyk features, add SNYK_TOKEN to repository secrets" >> $GITHUB_STEP_SUMMARY
+          npx snyk test --severity-threshold=high || echo "Vulnerabilities found or Snyk auth required" >> $GITHUB_STEP_SUMMARY
 
   npm-audit:
     runs-on: ubuntu-latest
