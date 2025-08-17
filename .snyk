@@ -1,0 +1,24 @@
+# Snyk configuration file for Vibe Coding Gold
+# Learn more: https://snyk.io/docs/snyk-cli/cli-reference/
+
+version: v1.0.0
+
+# Ignore specific vulnerabilities
+ignore:
+  # Add specific CVEs or vulnerability IDs to ignore
+  # Example:
+  # SNYK-JS-LODASH-567746:
+  #   - '*':
+  #       reason: False positive or acceptable risk
+  #       expires: '2025-12-31T00:00:00.000Z'
+
+# Language settings
+language-settings:
+  javascript:
+    # Exclude dev dependencies from production scans
+    dev: false
+
+# Project configuration
+project:
+  name: vibe-coding-gold
+  environment: production
