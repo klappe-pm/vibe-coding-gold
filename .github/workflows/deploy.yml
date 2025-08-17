@@ -33,7 +33,9 @@ jobs:
         run: npm ci
         
       - name: Build with Quartz
-        run: npx quartz build
+        run: |
+          npx quartz build
+          cp public/static/CNAME public/CNAME
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
