@@ -45,11 +45,24 @@ Every piece of content follows our golden standards:
 
 ```
 /
-├── content/              # Satirical posts and guides
-├── quartz/               # Static site generator
-├── .github/workflows/    # Automated deployment
-├── docs/                 # Quartz documentation  
-└── public/               # Generated site (after build)
+├── content/                  # Satirical posts and guides
+│   ├── posts/               # Individual satirical solutions  
+│   └── index.md             # Homepage content
+├── quartz/                   # Quartz configuration and generated files
+│   ├── quartz.config.ts     # Main Quartz configuration
+│   └── static/              # Static assets (images, CNAME, etc.)
+├── .github/workflows/        # Automated CI/CD
+│   ├── deploy.yml           # GitHub Pages deployment
+│   ├── security-scan.yml    # Security vulnerability scanning
+│   └── pull_request_template.md # PR template for contributors
+├── docs/                     # Quartz documentation
+├── public/                   # Generated site (ignored by git)
+├── package.json              # Node.js dependencies and scripts
+├── .nvmrc                    # Node.js version specification (22)
+├── .gitignore               # Git ignore patterns
+├── CONTRIBUTING.md          # Contributor guidelines
+├── SECURITY.md              # Security policies
+└── LICENSE.txt              # MIT License
 ```
 
 ## 🔧 Development

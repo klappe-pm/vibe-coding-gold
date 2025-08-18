@@ -1,11 +1,31 @@
+# System files
 .DS_Store
 .gitignore
-node_modules
-public
-prof
+
+# Dependencies
+node_modules/
+
+# Build outputs
+public/
+prof/
 tsconfig.tsbuildinfo
-.obsidian
-.quartz-cache
+.quartz-cache/
+
+# Development files
+.obsidian/
 private/
 .replit
 replit.nix
+
+# Project-specific ignores
+agents/
+plans/
+templates/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
