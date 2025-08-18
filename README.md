@@ -67,19 +67,69 @@ Every piece of content follows our golden standards:
 
 ## 🔧 Development
 
+### Prerequisites
+
+- **Node.js 22+**: Required for Quartz v4.5.1
+- **npm 10+**: Comes with Node.js 22+
+- **Git**: Version control
+
+### Quick Start
+
 ```bash
-# Install dependencies (requires Node.js 22+)
+# Clone the repository
+git clone https://github.com/klappe-pm/vibe-coding-gold.git
+cd vibe-coding-gold
+
+# Use specified Node.js version (optional but recommended)
+nvm use  # reads from .nvmrc
+
+# Install dependencies
 npm ci
 
 # Build the site
 npx quartz build
 
-# Local development server
+# Start local development server
+npx quartz build --serve
+# Site available at http://localhost:8080
+```
+
+### Development Workflow
+
+```bash
+# Create feature branch for new content
+git checkout -b feature/add-quantum-toast
+
+# Add your absurd solution in content/
+# Remember: add publish: true to frontmatter
+
+# Test locally
 npx quartz build --serve
 
-# Deploy (automatic on push to main)
-git push origin main
+# Commit and push
+git add .
+git commit -m "Add Quantum Toast Algorithm: 500 lines of superposition"
+git push origin feature/add-quantum-toast
+
+# Create pull request on GitHub
 ```
+
+### Troubleshooting
+
+**Build fails with "Node version not supported"**:
+- Install Node.js 22+ or use `nvm install 22 && nvm use 22`
+
+**Local server won't start**:
+- Clear cache: `rm -rf .quartz-cache public`
+- Reinstall: `rm -rf node_modules && npm ci`
+
+**Content not appearing**:
+- Check frontmatter includes `publish: true`
+- Verify markdown syntax with `npx quartz build` output
+
+**Deploy fails**:
+- Automatic deployment on push to main
+- Check GitHub Actions tab for build logs
 
 ## 🤝 Contributing
 
